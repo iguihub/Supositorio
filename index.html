@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrudDoTiltalisson</title>
+<script type="text/javascript">
+function calcular() {
+   var formulario = document.getElementById("formulario")
+   var kilos = +formulario.kilos.value;
+   var metros = +formulario.metros.value;
+   var centimetros = +formulario.centimetros.value;
+
+   var altura = (metros * 100 + centimetros) / 100;
+
+   var imc = kilos / (altura * altura)
+
+   formulario.imc.value = imc.toFixed(2);
+
+   if(imc < 20)
+    		{
+    			alert('Você esta abaixo do peso!');
+    		} 
+    		else if(imc >20 && imc <= 25)
+    		{
+    			alert("Peso Ideal");
+    		}
+    		else if(imc >25 && imc <= 30)
+    		{
+    			alert("Sobrepeso");
+    		}
+    		else if(imc >30 && imc <= 35)
+    		{
+    			alert("Obesidade Moderada");
+    		}
+    		else if(imc >35 && imc <= 40)
+    		{
+    			alert("Obesidade Severa");
+    		}
+    		else if(imc >40 && imc <= 50)
+    		{
+    			alert("Obesidade Morbida");
+    		}
+    		else
+    		{
+    			alert('Gordo');
+    		}
+
+
+
+
+
+}
+
+
+</script>
+
+
+    <script type="text/javascript">
+        function mascara(i){
+       
+       var v = i.value;
+       
+       if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+          i.value = v.substring(0, v.length-1);
+          return;
+       }
+       
+       i.setAttribute("maxlength", "14");
+       if (v.length == 3 || v.length == 7) i.value += ".";
+       if (v.length == 11) i.value += "-";
+    
+    }    
+        </script>
+
+
+<style>
+    body {
+        font-family: sans-serif;
+    }
+    label {
+        cursor: pointer;
+        display: block;
+        
+    }
+</style>
+</head>
+
+<body>
+    <section>
+<h1>Crud</h1>
+     <form method="get" target="_blank">
+       <label for="nome"> <b> Nome: </b>
+    </label>
+    <input type="text" name="nome" id="nome" placeholder="NomeCompleto"required>
+ 
+
+<label for="cpf"> <b>Cpf:</b> </label>
+    
+    <input type="text" name="cpf" id="cpf" placeholder="DigiteSeuCpf"
+     oninput="mascara(this)">
+
+
+
+    </form>
+
+<form id="formulario">
+    <fieldset>
+        <legend>CalculoIMC</legend>
+    <label for="kilos"> Kilos </label>
+    <input type="text" name="kilos" id="kilos">
+
+    <label for="metros">Metros</label>
+    <input type="text" name="metros" id="metros">
+
+    <label for="centimetros">Centimetros</label>
+    <input type="text" name="centimetros" id="centimetros">
+
+    <label for="imc">Imc</label>
+    <input type="text" name="imc" id="imc" disabled="disabled"/>
+
+    <a href="#" onclick="calcular();">Calcular</a>
+</fieldset>
+</form>
+    </section>
+    
+
+
+</body>
+</html>
